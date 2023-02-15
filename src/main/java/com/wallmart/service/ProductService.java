@@ -241,16 +241,6 @@ public class ProductService {
 	
 	createQuery.where(predicateValue);
 	
-	//Page<Item> findAllPost = itemRepository.findAll(pg);
-		 
-	//List<Item> content = findAllPost.getContent();
-	//System.out.println("......."+content);
-	
-//	List<Item> createQuery2 =  entityManager.createQuery(createQuery).setFirstResult((int)pg.getPageNumber())
-//			.setFirstResult((int)pg.getPageSize()).getResultList();
-			
-	//createQuery2.set
-	
 	List<Item> createQuery2 =  entityManager.createQuery(createQuery).setFirstResult((pageNumber)*pageSize)
 			.setMaxResults(pageSize).getResultList();
 	int total = createQuery2.size();
