@@ -100,7 +100,6 @@ public class ProductService {
 		totalResult=totalValue.get("totalResults");
 		itemsValue = totalValue.get("numItems");
 		url=url+"&start=";
-		System.out.println("list value - "+getListValue());	
 		
 		while (itemsValue < totalResult) {
 			System.out.println("value : "+itemsValue);
