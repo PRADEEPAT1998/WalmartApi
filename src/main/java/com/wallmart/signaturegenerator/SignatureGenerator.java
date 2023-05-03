@@ -82,7 +82,7 @@ public class SignatureGenerator {
 		//System.out.println("consumerId: " + consumerId);
 		//System.out.println("intimestamp: " + intimestamp);
 
-		Map<String, String> map = new HashMap<>();
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("WM_CONSUMER.ID", consumerId);
 		map.put("WM_CONSUMER.INTIMESTAMP", Long.toString(intimestamp));
 		map.put("WM_SEC.KEY_VERSION", privatekeyVersion);

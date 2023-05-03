@@ -63,8 +63,8 @@ public class WallmartController {
 			,@RequestParam(name="availableOnline",required=false)Boolean availableOnline
 			,@RequestParam(name="stock",required=false)String stock
 			,@RequestParam(name="color",required=false)String color
-			,@RequestParam("pageNumber")Integer pageNumber,
-			@RequestParam("pageSize")Integer pageSize
+			,@RequestParam("pageNumber")Integer pageNumber
+			,@RequestParam("pageSize")Integer pageSize
 			,Pageable pageable){
 	
 	Page<Item> selectedItems = productService.getSelectedItems(brandName,catagory,availableOnline,stock,color,pageNumber,pageSize,pageable);

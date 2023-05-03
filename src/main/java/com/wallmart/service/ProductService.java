@@ -85,7 +85,7 @@ public class ProductService {
 		Long totalResult = null;
 		Long itemsValue = null;
 		
-		Map<String, WallmartEnumUrl> compainUrl = new HashMap<>();
+		Map<String, WallmartEnumUrl> compainUrl = new HashMap<String, WallmartEnumUrl>();
 		compainUrl.put(wallmartTvUrl, WallmartEnumUrl.Tv);
 		compainUrl.put(wallmartWashingMachineUrl, WallmartEnumUrl.Washing_Machine);
 		//compainUrl.put(wallmartSamsungWatchUrl, WallmartEnumUrl.Samsung_Watch);
@@ -100,7 +100,7 @@ public class ProductService {
 		totalResult=totalValue.get("totalResults");
 		itemsValue = totalValue.get("numItems");
 		url=url+"&start=";
-		System.out.println("list value - "+getListValue());	
+		//System.out.println("list value - "+getListValue());	
 		
 		while (itemsValue < totalResult) {
 			System.out.println("value : "+itemsValue);
@@ -154,7 +154,7 @@ public class ProductService {
 		System.out.println(value.toString());
         System.out.println(" product name - "+productUrl);
 		
-     	List<Item> productItems = product.getItems();
+     List<Item> productItems = product.getItems();
 		  
 		productItems.forEach(items -> {  
 		items.setWallmartUrlCategory(productUrl);
@@ -173,14 +173,6 @@ public class ProductService {
 		  });
 		   imageEntitiesRepository.saveAll(itemImages); 
 		 });
-		 
-		
-		/*List<Item> totalItem = product.getItems();
-		
-		totalItem.forEach(item->{
-			
-			System.out.println(item.getBrandName());
-		});*/
 		
 		return value;
 
@@ -241,20 +233,10 @@ public class ProductService {
 	
 	createQuery.where(predicateValue);
 	
-	//Page<Item> findAllPost = itemRepository.findAll(pg);
-		 
-	//List<Item> content = findAllPost.getContent();
-	//System.out.println("......."+content);
-	
-//	List<Item> createQuery2 =  entityManager.createQuery(createQuery).setFirstResult((int)pg.getPageNumber())
-//			.setFirstResult((int)pg.getPageSize()).getResultList();
-			
-	//createQuery2.set
-	
 	List<Item> createQuery2 =  entityManager.createQuery(createQuery).setFirstResult((pageNumber)*pageSize)
 			.setMaxResults(pageSize).getResultList();
 	int total = createQuery2.size();
-	Page<Item> values = new PageImpl<> (createQuery2,pageable,total);
+	Page<Item> values = new PageImpl<Item> (createQuery2,pageable,total);
 		return values;
 		
 	}
